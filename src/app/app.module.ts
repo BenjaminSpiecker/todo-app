@@ -5,20 +5,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
-import { toDoReducer } from './store/todo-store/todo.reducer';
 import { environment } from 'src/environments/environment.prod';
+import { appReducers } from './store/app.reducer';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     ComponentsModule,
-    StoreModule.forRoot({ todos: toDoReducer }),
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production
+      logOnly: false
     })
   ],
   providers: [],
